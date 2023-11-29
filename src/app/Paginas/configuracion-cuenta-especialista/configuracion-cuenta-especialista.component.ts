@@ -156,9 +156,9 @@ export class ConfiguracionCuentaEspecialistaComponent implements OnInit {
             // Realiza acciones adicionales después de completar ambas solicitudes
             this.alertService.MinShowSucces('¡Correcto!', resPaciente.message);
             // Esperar 3 segundos antes de recargar la página
-            // setTimeout(() => {
-            //   location.reload();
-            // }, 3000);
+            setTimeout(() => {
+              location.reload();
+            }, 3000);
           },
           (error) => {
             console.error('Error al actualizar usuario o paciente:', error);
