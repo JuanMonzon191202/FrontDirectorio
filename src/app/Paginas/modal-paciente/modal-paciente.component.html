@@ -1,0 +1,56 @@
+<div class="modal-overlay">
+  <div class="modal-content">
+    <!-- Contenido del modal -->
+    <h2>Editar Usuario</h2>
+
+    <form>
+      <!-- Campos del formulario -->
+      <div class="form-group">
+        <label for="nombre">Nombre(s):</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          [(ngModel)]="selectedUserPaciente.nombre"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="apellido">Apellido(s):</label>
+        <input
+          type="text"
+          id="apellido"
+          name="apellido"
+          [(ngModel)]="selectedUserPaciente.apellido"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input
+          type="password"
+          id="email"
+          disabled="true"
+          name="email"
+          [(ngModel)]="selectedUserPaciente.email"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="isActive">Perfil Activado:</label>
+        <select
+          id="isActive"
+          name="isActive"
+          [(ngModel)]="selectedUserPaciente.isActive"
+        >
+          <option [ngValue]="true">Activo</option>
+          <option [ngValue]="false">Inactivo</option>
+        </select>
+      </div>
+
+      <!-- Botón para cerrar el modal -->
+      <button type="button" (click)="cerrarModal()">Cancelar</button>
+      <button type="button" (click)="Update()">Actualizar</button>
+    </form>
+  </div>
+</div>

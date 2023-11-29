@@ -1,0 +1,12 @@
+<mat-toolbar color="primary">
+  <span>My Dashboard App</span>
+  <div class="menu-icon" (click)="toggleMenu()">
+    <!-- Icono de hamburguesa (puedes cambiarlo según tus necesidades) -->
+    &#9776;
+  </div>
+  <ul class="nav-links" [ngClass]="{ active: isMenuOpen }">
+    <li><a routerLink="#">Especialistas</a></li>
+    <li><a routerLink="#">Usuarios</a></li>
+    <li><a routerLink="#">Especialidades</a></li>
+  </ul>
+</mat-toolbar>

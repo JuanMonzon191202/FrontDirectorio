@@ -1,0 +1,252 @@
+<app-navbar></app-navbar>
+<div class="contenedor-general">
+  <div class="sidebar">
+    <button class="boton-sidebar" (click)="visualizarPacientes()">
+      Visualizar Pacientes
+    </button>
+    <button class="boton-sidebar" (click)="visualizarEspecialistas()">
+      Visualizar Especialistas
+    </button>
+    <button class="boton-sidebar" (click)="visualizarNoAutorizados()">
+      Visualizar Especialistas no autorizados
+    </button>
+    <button class="boton-sidebar" (click)="roles()">Roles</button>
+
+    <button class="boton-sidebar" (click)="especialidades()">
+      Especialidades
+    </button>
+    <button class="boton-sidebar" (click)="cerrarsesion()">
+      Cerrar sesión
+    </button>
+  </div>
+  <!-- rolesData -->
+  <div class="contenido-principal">
+    <!-- Mostrar el contenido según la variable contenidoAMostrar -->
+    <ng-container *ngIf="contenidoAMostrar === 'Mostrar pacientes'">
+      <h2>Lista de Usuarios Pacientes</h2>
+      <div class="card-container">
+        <div *ngFor="let paciente1 of userDataPaciente | ObjToArray">
+          <div class="card">
+            <div class="card-info">
+              <h3>{{ paciente1.nombre }} {{ paciente1.apellido }}</h3>
+              <p>Email: {{ paciente1.email }}</p>
+              <!-- Agrega más información según sea necesario -->
+
+              <!-- Píldora de estado -->
+              <div
+                class="status-pill"
+                [ngClass]="{
+                  active: paciente1.isActive,
+                  inactive: !paciente1.isActive
+                }"
+              >
+                {{ paciente1.isActive ? "Activo" : "Inactivo" }}
+              </div>
+
+              <!-- Botones en la parte inferior -->
+              <div class="card-buttons">
+                <!-- <button (click)="openModalPaciente(paciente1)">
+                  Ver Detalles
+                </button> -->
+                <button (click)="editInfoPaciente(paciente1)">Editar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coloca aquí el contenido que quieres mostrar para pacientes -->
+    </ng-container>
+
+    <ng-container *ngIf="contenidoAMostrar === 'Mostrar especialistas'">
+      <!-- Coloca aquí el contenido que quieres mostrar para especialistas -->
+      <h2>Lista de Especialistas</h2>
+      <div class="card-container">
+        <div *ngFor="let paciente of userData | ObjToArray">
+          <div class="card">
+            <div class="card-info">
+              <h3>
+                {{ paciente.usuario.nombre }} {{ paciente.usuario.apellido }}
+              </h3>
+              <p>Email: {{ paciente.usuario.email }}</p>
+
+              <p>Dirección: {{ paciente.direccion + " " + paciente.ciudad }}</p>
+
+              <p>Número de cédula: {{ paciente.noCedula }}</p>
+
+              <!-- Agrega más información según sea necesario -->
+
+              <!-- Píldora de estado -->
+              <!-- Píldora de estado -->
+              <div
+                class="status-pill"
+                [ngClass]="{
+                  active: paciente.usuario.isActive,
+                  inactive: !paciente.usuario.isActive
+                }"
+              >
+                {{ paciente.usuario.isActive ? "Activo" : "Inactivo" }}
+              </div>
+
+              <!-- Botones en la parte inferior -->
+              <div class="card-buttons">
+                <button (click)="openModal(paciente)">Ver Detalles</button>
+                <button (click)="editInfo(paciente)">Editar</button>
+                <button>
+                  <a
+                    href="https://download1511.mediafire.com/qsrd5xm3pqegllqTfmcD-JQZNn2l6_Va_EBix8r8Rp-94bf_7byqPZ0hyBdt43jIaAckJ1d-St7o5jsCmStlDIybxHHsc_dnOCh05L3upLjEVYPvChhnSmsN2lLhg0x9D9q2vZy4-lkmCHuVArfT84Yj2Y8jzmlJTguLxG_hsP51Zg/8w329d8yn4h508o/1918+Cedprof+-+PDF+Cedula+Profesional+_+PDF.pdf"
+                    target="_blank"
+                    download="Cedula_Profesional.pdf"
+                  >
+                    Ver documento
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container
+      *ngIf="contenidoAMostrar === 'Mostrar especialistas no autorizados'"
+    >
+      <!-- Coloca aquí el contenido que quieres mostrar para especialistas no autorizados -->
+      <h2>Lista de Especialistas No Activos</h2>
+      <div class="card-container">
+        <div *ngFor="let paciente of userData | ObjToArray">
+          <div class="card">
+            <div class="card-info">
+              <h3>
+                {{ paciente.usuario.nombre }} {{ paciente.usuario.apellido }}
+              </h3>
+              <p>Email: {{ paciente.usuario.email }}</p>
+
+              <p>Dirección: {{ paciente.direccion + " " + paciente.ciudad }}</p>
+
+              <p>Número de cédula: {{ paciente.noCedula }}</p>
+
+              <!-- Agrega más información según sea necesario -->
+
+              <!-- Píldora de estado -->
+              <div
+                class="status-pill"
+                [ngClass]="{
+                  active: paciente.usuario.isActive,
+                  inactive: !paciente.usuario.isActive
+                }"
+              >
+                {{ paciente.usuario.isActive ? "Activo" : "Inactivo" }}
+              </div>
+
+              <!-- Botones en la parte inferior -->
+              <div class="card-buttons">
+                <button (click)="openModal(paciente)">Ver Detalles</button>
+                <button (click)="editInfo(paciente)">Editar</button
+                ><button>
+                  <a
+                    href="https://download1511.mediafire.com/qsrd5xm3pqegllqTfmcD-JQZNn2l6_Va_EBix8r8Rp-94bf_7byqPZ0hyBdt43jIaAckJ1d-St7o5jsCmStlDIybxHHsc_dnOCh05L3upLjEVYPvChhnSmsN2lLhg0x9D9q2vZy4-lkmCHuVArfT84Yj2Y8jzmlJTguLxG_hsP51Zg/8w329d8yn4h508o/1918+Cedprof+-+PDF+Cedula+Profesional+_+PDF.pdf"
+                    target="_blank"
+                    download="Cedula_Profesional.pdf"
+                  >
+                    Ver documento
+                  </a>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="contenidoAMostrar === 'Mostrar especialidades'">
+      <h2>Lista de Especialidades</h2>
+      <div class="card-container">
+        <div *ngFor="let especialidad of especialidadesData | ObjToArray">
+          <div class="card">
+            <div class="card-info">
+              <h3>
+                {{ especialidad.nombreEspecialidad }}
+              </h3>
+
+              <!-- Botones en la parte inferior -->
+              <div class="card-buttons">
+                <button (click)="openModalEspecialiad(especialidad)">
+                  Ver Detalles
+                </button>
+                <button (click)="editInfoEspecialiad(especialidad)">
+                  Editar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="circular-button" (click)="openModalEspecialiadCreate()">
+        +
+      </button>
+    </ng-container>
+    <ng-container *ngIf="contenidoAMostrar === 'Mostrar roles'">
+      <h2>Lista de Roles</h2>
+      <div class="card-container">
+        <div *ngFor="let rol of rolesData | ObjToArray">
+          <div class="card">
+            <div class="card-info">
+              <h3>
+                {{ rol.nombreRol }}
+              </h3>
+
+              <!-- Botones en la parte inferior -->
+              <div class="card-buttons">
+                <button (click)="openModalRol(rol)">Ver Detalles</button>
+                <button (click)="editInfoRol(rol)">Editar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="circular-button" (click)="openModalRolCreate()">+</button>
+    </ng-container>
+  </div>
+  <!-- modal para pacientes -->
+  <ng-container *ngIf="modalAbierto">
+    <app-modal
+      [selectedUser]="selectedUser"
+      (cerrar)="cerrarModal()"
+    ></app-modal>
+  </ng-container>
+  <!-- modal editar paciente -->
+  <ng-container *ngIf="modalAbiertoPaciente">
+    <app-modal-paciente
+      [selectedUserPaciente]="selectedUserPaciente"
+      (cerrar)="cerrarModal()"
+    ></app-modal-paciente>
+  </ng-container>
+  <!-- modal editar especialisada -->
+  <ng-container *ngIf="modalAbiertoEspecialidad">
+    <app-modal-especialidades
+      [selectedEspecialiad]="selectedEspecialiad"
+      (cerrar)="cerrarModalEspecialidad()"
+    ></app-modal-especialidades>
+  </ng-container>
+  <!-- modal crear especialidad -->
+  <ng-container *ngIf="modalAbiertoEspecialidadCreate">
+    <app-modal-especialidades-agregar
+      (cerrar)="cerrarModalEspecialidadCreate()"
+    ></app-modal-especialidades-agregar>
+  </ng-container>
+  <!-- modal listar roles -->
+  <ng-container *ngIf="modalAbiertoRoles">
+    <app-modal-roles
+      [selectedRol]="selectedRol"
+      (cerrar)="cerrarModalRol()"
+    ></app-modal-roles>
+  </ng-container>
+  <!-- modal crear roles -->
+  <ng-container *ngIf="modalAbiertoRolesCreate">
+    <app-modal-roles-create
+      (cerrar)="cerrarModalRolCreate()"
+    ></app-modal-roles-create>
+  </ng-container>
+</div>
+<!-- app-modal-especialidades-agregar -->

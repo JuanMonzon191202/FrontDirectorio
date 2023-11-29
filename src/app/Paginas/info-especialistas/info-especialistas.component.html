@@ -1,0 +1,90 @@
+<div class="contenedorGeneral">
+  <div class="header">
+    <i
+      class="bi bi-arrow-left-circle-fill flechaRetroceder"
+      routerLink="/home"
+    ></i>
+    <div></div>
+    <!-- <div class="buscador">
+      <form (ngSubmit)="onSubmit()">
+        <select [(ngModel)]="selectedEspecialidad" name="especialidad">
+          <option value="" disabled selected>Seleccionar especialidad</option>
+          <option
+            *ngFor="let especialidad of ListaEspecialidades | ObjToArray"
+            [value]="especialidad.id"
+          >
+            {{ especialidad.nombreEspecialidad }}
+          </option>
+        </select>
+
+        <select [(ngModel)]="selectedEstado" name="estado">
+          <option value="">Estado</option>
+          <option *ngFor="let estado of estadosMexico" [value]="estado">
+            {{ estado }}
+          </option>
+        </select>
+        <button><i class="bi bi-search"></i> Buscar</button>
+      </form>
+    </div> -->
+    <!-- <div class="buscador">
+            <select name="" id="especialidad">
+                <option value="">Especialidad</option>
+            </select>
+            <select name="" id="estado">
+                <option value="">Estado</option>
+            </select>
+            <button><i class="bi bi-search"></i> Buscar</button>
+        </div> -->
+    <img
+      src="https://www.pngkey.com/png/full/72-729716_user-avatar-png-graphic-free-download-icon.png"
+      alt="Foto de perfil del usuario"
+      class="fotoPerfil"
+      routerLink="/configuracion-cuenta"
+    />
+  </div>
+
+  <div class="contenedor-informacion-especialista">
+    <div class="contenedor-auxiliar">
+      <img
+        src="https://www.pngkey.com/png/full/72-729716_user-avatar-png-graphic-free-download-icon.png"
+        class="foto-especialista"
+      />
+      <h1 class="nombre-especialista">
+        {{ userData.usuario.nombre }}
+        {{ userData.usuario.apellido }}
+      </h1>
+      <h2 class="nombre-especialidad">{{ userData.ciudad }}</h2>
+      <br />
+      <h2 class="direccion">{{ userData.direccion }}</h2>
+      <br />
+      <br />
+
+      <!-- <h2 class="nombre-especialidad">{{ userData.noCedula }}</h2> -->
+      <!-- Agrega el código para mostrar otras propiedades del especialista -->
+
+      <div class="contenedor-calificacion">
+        <div class="contenedor-aux">
+          <div class="barra-1"></div>
+          <div class="barra-2"></div>
+          <div class="barra-3"></div>
+        </div>
+      </div>
+
+      <h1 class="texto-cedula">No. de cédula:</h1>
+      <h2 class="cedula">{{ userData.noCedula }}</h2>
+      <p class="descripcion-especialista">{{ userData.descripcion }}</p>
+    </div>
+    <br /><br />
+  </div>
+
+  <div class="agenda-especialista">
+    <h1 class="titulo-agenda">Agendar cita</h1>
+    <div class="agrupacoin">
+      <h3 class="texto-hora-del-dia">Calendario</h3>
+      <div class="barra-divisora"></div>
+    </div>
+    <button class="botonRevisarCalendario">
+      Revisar calendario <i class="bi bi-calendar-week"></i>
+    </button>
+  </div>
+</div>
