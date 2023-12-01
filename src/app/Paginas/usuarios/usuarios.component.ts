@@ -85,6 +85,8 @@ export class UsuariosComponent implements OnInit {
   visualizarNoAutorizados(): void {
     this.userService.ListarEspecialistasNon().subscribe((response) => {
       this.userData = response.$values;
+      console.log(this.userData);
+
       this.contenidoAMostrar = 'Mostrar especialistas no autorizados'; // Puedes asignar el contenido que quieras
     });
   }

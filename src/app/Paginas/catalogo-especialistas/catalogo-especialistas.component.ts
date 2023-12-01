@@ -62,7 +62,7 @@ export class CatalogoEspecialistasComponent implements OnInit {
 
         if (res && res.$values) {
           this.Especialistas = res.$values;
-          // console.log(this.Especialistas);
+          console.log(this.Especialistas);
 
           if (this.Especialistas && this.Especialistas.length > 0) {
             // console.log('ListaEspecialidades:', this.ListaEspecialidades);

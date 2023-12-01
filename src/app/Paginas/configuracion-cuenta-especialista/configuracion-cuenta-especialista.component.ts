@@ -85,6 +85,8 @@ export class ConfiguracionCuentaEspecialistaComponent implements OnInit {
 
       console.log(this.userData);
       this.idEspecialista = this.userData.especialistasCmc.$values[0].id;
+      console.log(this.userData.especialistasCmc.$values[0].id);
+
       const alerta = this.userData.isActive;
 
       if (alerta === false) {
@@ -176,9 +178,8 @@ export class ConfiguracionCuentaEspecialistaComponent implements OnInit {
 
   // Cambios en el servicio
   public especialidades() {
-    const tokenid = this.LoginService.getUserId();
     this.especialidadService
-      .EspecialidadXespecialista(tokenid)
+      .EspecialidadXespecialista(this.idEspecialista)
       .subscribe((res) => {
         // Verificar si la respuesta tiene una propiedad 'especialidades'
         if (res) {
